@@ -1,0 +1,9 @@
+{
+    "googleapiClientSecretFile": "client_secret.json",
+    "googleCalendarId": "primary",
+    "moodleCalendarURL": "<link to ics calendar file>",
+
+    "categoryPrefixes": {
+        "<Subject Name>": "<Short form>"
+    }
+}

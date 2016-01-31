@@ -1,0 +1,17 @@
+{
+  "name": "moodle-google-cal",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "googleapis": "~2.1.7",
+    "google-auth-library": "~0.9.7",
+    "ical": "~0.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nisarg Jhaveri <nisargjhaveri@gmail.com>",
+  "license": "MIT"
+}
