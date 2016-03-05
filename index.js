@@ -57,17 +57,17 @@ function decideAction(event) {
     }, function(err, response) {
         var newEvent = false;
         if (err) {
-            console.log('Inserting', event.id);
+            console.log('Inserting', event.id, '"' + event.summary + '"');
             insertEvent(event);
         } else {
             if (!(event.updated) ||
                 (new Date(response.updated)) < (new Date(event.updated))
             ) {
-                console.log('Patching', event.id);
+                console.log('Patching', event.id, '"' + event.summary + '"');
                 patchEvent(event);
             } else {
                 // Else, do nothing
-                console.log('Already up to date', event.id);
+                console.log('Already up to date', event.id, '"' + event.summary + '"');
             }
         }
     });
