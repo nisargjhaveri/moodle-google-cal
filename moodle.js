@@ -41,6 +41,8 @@ function convertEvent(event) {
         googleEvent.description += '\n\ncategories: ' + event.categories.toString();
         if (event.categories[0] in prefixes) {
             googleEvent.summary = '[' + prefixes[event.categories[0]] + '] ' + googleEvent.summary;
+        } else {
+            googleEvent.summary = '[' + event.categories[0] + '] ' + googleEvent.summary;
         }
     }
 

@@ -22,7 +22,7 @@ function insertEvent(event) {
         resource: event
     }, function(err, response) {
         if (err) {
-            console.log('There was an error contacting the Calendar service: ' + err);
+            console.log('Error while inserting: "' + err + '"');
             return;
         }
     });
@@ -40,7 +40,7 @@ function patchEvent(event) {
         resource: event
     }, function(err, response) {
         if (err) {
-            console.log('There was an error contacting the Calendar service: ' + err);
+            console.log('Error while patching: "' + err + '"');
             return;
         }
     });
@@ -48,6 +48,8 @@ function patchEvent(event) {
 
 function decideAction(event) {
     var calendar = google.calendar('v3');
+
+    console.log('Trying to fetch event', event.id, 'from Google Calendar');
     calendar.events.get({
         auth: gAuth,
         calendarId: calendarId,
@@ -57,6 +59,7 @@ function decideAction(event) {
     }, function(err, response) {
         var newEvent = false;
         if (err) {
+            console.log('Error while fetching', event.id, ': "' + err + '"');
             console.log('Inserting', event.id, '"' + event.summary + '"');
             insertEvent(event);
         } else {
@@ -75,7 +78,7 @@ function decideAction(event) {
 
 
 function updateEvents(events) {
-    console.log("Updating events");
+    console.log(events.length + ' events fetched from Moodle');
     for (var i in events) {
         if (events.hasOwnProperty(i)) {
             decideAction(events[i], patchEvent, insertEvent);
@@ -85,6 +88,6 @@ function updateEvents(events) {
 
 function pushCalendar() {
     console.log(new Date());
-    console.log("Getting events");
+    console.log('Fetching events from Moodle');
     moodle.getEvents(updateEvents);
 }
